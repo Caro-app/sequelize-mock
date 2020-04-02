@@ -642,7 +642,7 @@ fakeModel.prototype.build = function (values, options) {
 fakeModel.prototype.create = function (instObj, operOpts) {
 	return this.$query({
 		query: 'create', queryOptions: { 0: instObj, 1: operOpts },
-		fallbackFn: !model.options.autoQueryFallback ?
+		fallbackFn: !this.options.autoQueryFallback ?
 			null : function () {
 				let inst = this.build({ ...queryOptions[0] });
 				this.$queryInterface.$clearQueue();
