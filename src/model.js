@@ -206,7 +206,7 @@ function fakeModel(name, defaults, opts) {
 						let res = mockRes[0] && !Array.isArray(mockRes[0])
 							? mockRes.shift().content : this.build({ id: 10900 });
 
-						return _leftJoin({ this, subQuery, res });
+						return _leftJoin({ model:this, subQuery, res });
 					})();
 				}
 
@@ -234,7 +234,7 @@ function fakeModel(name, defaults, opts) {
 						res = !Array.isArray(res) ? [res] : res;
 
 						for (let i = 0; i < res.length; i += 1) {
-							res[i] = await _leftJoin({ this, subQuery, res: res[i] });
+							res[i] = await _leftJoin({ model: this, subQuery, res: res[i] });
 						}
 
 						return res;
